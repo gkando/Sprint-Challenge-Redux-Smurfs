@@ -22,10 +22,27 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+- [x] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
+  Actions - Events. Actions send data from the app to the redux store.
+
+  Reducers - Functions that take the current state of the app and an action and then return a new state.
+
+  Store - The object that holds the app state and provides a few helper methods to access the state, dispatch actions and listeners.
+
+
+- [x] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+  Component state is maintained at the component level -- it would be good to use component state for a form input. 
+
+  Application state holds the data of the app that may be needed by multiple components.
+
+
+- [x] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+  A thunk is a function that’s returned by another function.
+  Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. 
+  
 ## Project Set Up
 
 Follow these steps to set up your project:

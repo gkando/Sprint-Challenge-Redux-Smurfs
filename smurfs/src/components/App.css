@@ -1,28 +1,77 @@
+body{
+  background-color: #88CCFF;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: #929d9e; */
+  color: rgb(255, 255, 255);
+  font-family: 'PT Sans', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.village{
+  z-index: -1;
+  position: absolute;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.Smurfs{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.Smurf{
+  background-color: #fffffff5;
   padding: 20px;
-  color: white;
+  border-radius: 20%;
+  margin: 0 auto;
 }
 
-.App-title {
-  font-size: 1.5em;
+nav{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  height: 44px;
+  background: #adc9d1;
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  /* border-radius: 15px 15px 0px 0px; */
 }
 
-.App-intro {
-  font-size: large;
+nav a {
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  /* padding: 20px; */
+  display: inline-block;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+
+.smurfs-container{
+  margin: 4rem auto;
+  /* background-color: #f7f7f7; */
+  width: 70vw;
+  /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.315); */
+
+}
+
+.SmurfFormContainer{
+  background-color: #ffffffb4;
+  width: 50%;
+  height: 65vh;
+  margin: 0 auto;
+
+}
+
+.SmurfForm{
+  display: flex;
+  flex-flow: column wrap;
+  width: 40%;
+  height: 65vh;
+  margin: 0 auto;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
