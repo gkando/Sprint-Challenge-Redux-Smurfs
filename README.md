@@ -41,7 +41,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 - [x] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
   A thunk is a function that’s returned by another function.
-
+  Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. 
+  
 ## Project Set Up
 
 Follow these steps to set up your project:

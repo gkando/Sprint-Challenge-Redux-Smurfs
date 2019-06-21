@@ -14,7 +14,6 @@ import { connect } from "react-redux";
 
 const Smurf = props => {
 
-
   const useStyles = makeStyles({
     card: {
       minWidth: 275,
@@ -38,84 +37,58 @@ const Smurf = props => {
 
   const classes = useStyles();
   
-const handleSmurf = () => {
-  const smurf = {
-    title: 'Update Smurf', 
-    flag: 'update', 
-    id: props.smurf.id, 
-    name: props.smurf.name, 
-    age: props.smurf.age, 
-    height: props.smurf.height 
+  const handleSmurf = () => {
+    const smurf = {
+      title: 'Update Smurf', 
+      flag: 'update', 
+      id: props.smurf.id, 
+      name: props.smurf.name, 
+      age: props.smurf.age, 
+      height: props.smurf.height 
+    }
+    props.handleSmurf(smurf);
   }
-  props.updateSmurfs(smurf);
-}
 
   return (
-    // <div className="Smurf">
-    //     <h3>{props.smurf.name}</h3>
-    //     <strong>{props.smurf.height} tall</strong>
-    //     <p>{props.smurf.age} smurf years old</p>
-    // </div>
-
-<Grid item key={props.smurf.name} xs={12} sm={6} md={4}>
-<Card className={classes.card}>
-  <CardContent>
-    <Typography variant="h5" component="h2">
-        {props.smurf.name}
-    </Typography>
-    <Typography variant="body2" component="p">
-    {props.smurf.age}
-        <br />
+  <Grid item key={props.smurf.name} xs={12} sm={6} md={4}>
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography variant="h5" component="h2">
+            {props.smurf.name}
+        </Typography>
+        <Typography variant="body2" component="p">
+        {props.smurf.age}
+            <br />
+                <strong>{props.smurf.height} tall</strong>
+            <br />
             
-            <strong>{props.smurf.height} tall</strong>
-        <br />
-        
-    </Typography>
-  </CardContent>
+        </Typography>
+      </CardContent>
+      <CardActions>
 
-  <CardActions>
+        <Link
+        onClick={handleSmurf}
+          to={{
+            pathname: "/update"
+          }} >
+          <Button size="small">Update Smurf</Button>
+        </Link>
 
-    <Link
-    onClick={handleSmurf}
-      to={{
-        pathname: "/update", 
-        // title: 'Update Smurf', 
-        // flag: 'update', 
-        // id: props.smurf.id, 
-        // name: props.smurf.name, 
-        // age: props.smurf.age, 
-        // height: props.smurf.height 
-      }} >
-      <Button size="small">Update Smurf</Button>
-    </Link>
+        {/* <Link 
+          to={{
+            pathname: "/delete"
+          }} >
+          <DeleteForeverIcon className={classes.icon} />
+        </Link> */}
 
-    {/* <Link 
-      to={{
-        pathname: "/delete", 
-        title: 'Delete Friend', 
-        flag: 'delete', 
-        id: props.friend.id, 
-        name: props.friend.name, 
-        age: props.friend.age, 
-        email: props.friend.email
-      }} >
-      <DeleteForeverIcon className={classes.icon} />
-    </Link> */}
-
-  </CardActions>
-</Card>
-</Grid>
-
-
-
-
-
-  )
+      </CardActions>
+    </Card>
+  </Grid>)
 };
 
 const mapStateToProps = state => {
   return {
-  handleSmurf: smurf => handleSmurf(smurf)    
+  handleSmurf: smurf => handleSmurf(smurf)
     };
 };
 export default connect(mapStateToProps, { handleSmurf })(Smurf);

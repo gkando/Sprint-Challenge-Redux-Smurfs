@@ -8,53 +8,62 @@ class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    smurf: {
-      name: '',
-      age: '',
-      height: '' },
-    id: ''
+        smurf: {
+            name: '', 
+            age: '', 
+            height: ''
+        },
+        title: '', 
+        flag: '', 
+        id: ''
     };
   }
 
   componentDidMount() {
-    const flag = this.props.location.flag
+    const flag = this.props.smurfData.flag
+
+    
     if (flag == 'update'  || flag == 'delete'){this.setState(
       {smurf: {
-        name: this.props.location.name, 
-        age: this.props.location.age, 
-        height: this.props.location.height
+        name: this.props.smurfData.name, 
+        age: this.props.smurfData.age, 
+        height: this.props.smurfData.height
       },
-        id: this.props.location.id
+        id: this.props.smurfData.id, 
+        flag: this.props.smurfData.flag
       }
     )}
   }
 
   addSmurf = event => {
     event.preventDefault();
-    const flag = this.props.location.flag
-
+    const flag = this.state.flag
+ 
     if (flag == 'update'){
-        const  smurf = this.state.smurf
-        console.log(smurf)
+        const smurf  = this.state.smurf
         const id = this.state.id
         this.props.updateSmurf(id, smurf)
+        this.props.history.push('/')
+
     }
     if (flag == 'delete'){
 
     }
-    else if (flag == null) {
+    else if (flag == '') {
         const  newSmurf = this.state.smurf
         this.props.addSmurf(newSmurf);
         this.props.history.push('/')
     }
-
-
   }
 
   handleInputChange = e => {
-      console.log(e)
-    this.setState({smurf:{ [e.target.name]: e.target.value }});
-  };
+    this.setState({
+      smurf: {
+        ...this.state.smurf,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
 
   render() {
 
@@ -75,7 +84,7 @@ class SmurfForm extends Component {
           <TextField
               id="outlined-number"
               label="Age"
-              name='smurf.age'
+              name='age'
               value={this.state.smurf.age}
               onChange={this.handleInputChange}
               type="number"
@@ -111,12 +120,9 @@ class SmurfForm extends Component {
 
 const mapStateToProps = state => {
     return {
-    //   todos: state,
+    smurfData: state.smurf,
     addSmurf: newSmurf => addSmurf(newSmurf),
-    updateSmurf: smurf => updateSmurf(smurf)
-
-      // filteredTodos: getVisibleTodos(state)
-      
+    updateSmurf: smurf => updateSmurf(smurf)      
       };
   };
 export default connect(mapStateToProps, { addSmurf, updateSmurf })(SmurfForm);

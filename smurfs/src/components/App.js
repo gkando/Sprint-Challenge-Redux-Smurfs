@@ -4,6 +4,7 @@ import './App.css';
 import Smurfs from './Smurfs';
 import SmurfForm from './SmurfForm';
 import NavBar from './NavBar';
+import Container from '@material-ui/core/Container';
 
 
 
@@ -27,21 +28,24 @@ class App extends Component {
 
         </div>
 
-        <h1>Smurf Village</h1>
-        <NavBar />
+        <div className='smurfs-container'>
 
-        <Route
-              exact 
-              path='/'
-              component={Smurfs}
-          />
+          <h1>Smurf Village</h1>
+          <NavBar />
+          <Container className='container' maxWidth="md">
+          <Route
+                exact 
+                path='/'
+                component={Smurfs}
+            />
 
-        <Route
-              exact
-              path="/:id"
-              component={SmurfForm}
-             />
-
+          <Route
+                exact
+                path="/:id"
+                component={SmurfForm}
+              />
+          </Container>
+      </div>
       </div>
     );
   }

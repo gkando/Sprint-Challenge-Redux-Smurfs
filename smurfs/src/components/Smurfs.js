@@ -1,36 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { getSmurfs } from "../actions/index";
 import Smurf from './Smurf';
-
+import Grid from '@material-ui/core/Grid';
 
 const Smurfs = props => {
-
+    const [nameState , setNameState] = useState(props)
     useEffect(() => {
+        setNameState(props.smurfs);
         props.getSmurfs();
-    }, []);
 
-console.log(props)
+    }, [nameState]);
+
     return (
-
-
     <div className="Smurfs">
-        { //Check if message failed
-            props.fetchingSmurfs
+        {props.fetchingSmurfs
             ? <div> Fetching Smurfs!</div> 
-            : <ul>
-                {props.smurfs.map(smurf => {
-                    return <Smurf key={smurf.name} smurf={smurf} />;
-                })}
-              </ul>
+            : 
+                <Grid container className='friend-list' spacing={4}>
+                    {props.smurfs.map(smurf => {
+                        return <Smurf key={smurf.name} smurf={smurf} />;
+                    })}
+                </Grid>
+             
         }
     </div>
     )
   
 }
 
-// our mapStateToProps needs to have two properties inherited from state
-// the characters and the fetching boolean
 const mapStateToProps = state => {
   return {
     smurfs: state.smurfs,
@@ -38,7 +36,6 @@ const mapStateToProps = state => {
     error: state.error
     };
 };
-
 
 export default connect(mapStateToProps, { getSmurfs })(Smurfs);
 
